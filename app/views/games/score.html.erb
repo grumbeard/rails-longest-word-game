@@ -1,0 +1,25 @@
+<h1>Result</h1>
+<div class="results">
+    <p>You Guessed:</p>
+  <h3>
+    "
+    <%= @guess %>
+    "
+  </h3>
+</div>
+
+<div class="description">
+  <%if @result == 'grid_non_word' %>
+    <p>Sorry but <strong><%= @guess %></strong> does not seem to be a valid English word...</p>
+  <%elsif @result == 'grid_word' %>
+    <p>You're <strong>amazing</strong>!</p>
+  <% elsif @result == 'non_grid' %>
+    <p>Sorry but <strong><%= @guess %></strong> can't be build out of <%= @letters.upcase.scan(/\w/).join(', ') %></p>
+  <% else %>
+    <p>I have no idea how you ended up here.</p>
+  <% end %>
+</div>
+
+<div class="return-link">
+  <%= link_to 'Play again', '/new' %>
+</div>
